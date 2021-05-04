@@ -13,7 +13,7 @@ class Stack
     }
     boolean push(int x)
     {
-        if(top>=(MAX))
+        if(top>=(MAX-1))
         {
             System.out.println("Stack Overflow");
             return false;
