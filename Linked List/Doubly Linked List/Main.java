@@ -29,6 +29,29 @@ class LinkedList
             node.prev=temp;
         }
     }
+    public void insertAT(int loc,int data)
+    {
+        Node node =new Node();
+        node.data=data;
+        node .next=null;
+        node.prev=null;
+        if(loc==0)
+        {
+            node.next=head;
+            head=node;
+        }else
+        {
+            Node temp=head;
+            for(int i=0;i<loc-1;i++)
+            {
+                temp=temp.next;
+            }
+            node.next=temp.next;
+            node.prev
+        }
+        
+    }
+
     public void display()
     {
         Node temp=head;
