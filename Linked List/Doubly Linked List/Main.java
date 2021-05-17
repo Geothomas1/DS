@@ -7,6 +7,20 @@ class Node{
 class LinkedList
 {
     Node head;
+    public int Length()
+    {
+        Node temp=head;
+        int c=0;
+        if(temp==null)
+        return 0;
+        while(temp!=null)
+        {
+            c++;
+            temp=temp.next;
+        }
+        return c;
+
+    }
     public void insert(int data)
     {
         Node node=new Node();
@@ -33,9 +47,13 @@ class LinkedList
     {
         Node node =new Node();
         node.data=data;
-        node .next=null;
+        node.next=null;
         node.prev=null;
-        if(loc==0)
+        if(loc>Length())
+        {
+            System.out.println("Invalid location");
+            return ;
+        }else if(loc==0)
         {
             node.next=head;
             head=node;

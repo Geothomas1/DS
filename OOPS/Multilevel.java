@@ -6,7 +6,7 @@ class Emp {
 }
 
 class Salary extends Emp {
-    int Salary = 2000;
+    int Salary = 20000;
 }
 
 class Multilevel extends Salary {
