@@ -32,37 +32,38 @@ class Singly {
         }
         if (temp == null) {
             return;
-        }
+        }//check if empty
         if (temp == tail) {
             tail.next = newNode;
             tail = newNode;
             return;
-        }
+        }//is at end
         newNode.next = temp.next;
         temp.next = newNode;
+        //not at front and empty
 
     }
 
     public void deleteNode(int data) {
         Node temp = head, prev = null;
-        
+
         if (temp == null) {
             System.out.println("Linked list is empty");
             return;
-        }
+        }//empty check
         if (temp != null && temp.data == data) {
             head = temp.next;
             return;
-        }
+        }//in first position
         if (temp == tail) {
             tail = prev;
             tail.next = null;
             return;
-        }
+        }// at end
         while (temp != null && temp.data != data) {
             prev = temp;
             temp = temp.next;
-        }
+        }//other position than front and back
         prev.next = temp.next;
     }
 
@@ -82,15 +83,15 @@ class Singly {
     public static void main(String[] args) {
         Singly list = new Singly();
         list.display();
-        list.addNode(10);
-        list.addNode(20);
-        list.addNode(30);
-        list.addNode(40);
-        list.display();
-        list.deleteNode(40);
-        list.display();
-        list.insertAfter(20, 60);
-        list.display();
+        list.addNode(10);//add 10
+        list.addNode(20);//add 20
+        list.addNode(30);//add 30
+        list.addNode(40);//add 40
+        list.display();// Just Display
+        list.deleteNode(40);//Delete 40
+        list.display();//Just Display
+        list.insertAfter(20, 60);//add data 60 after data 20 position
+        list.display();//Just Display
 
     }
 }
