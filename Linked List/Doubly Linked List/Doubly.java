@@ -1,8 +1,8 @@
-
-class Singly {
+class Doubly {
     class Node {
         int data;
         Node next;
+        Node prev;
 
         Node(int data) {
             this.data = data;
@@ -12,16 +12,15 @@ class Singly {
     public Node head = null;
     public Node tail = null;
 
-    public void addNode(int data) {
+    public void insertNode(int data) {
         Node newNode = new Node(data);
-
         if (head == null) {
             head = newNode;
         } else {
+            newNode.prev = tail;
             tail.next = newNode;
         }
         tail = newNode;
-
     }
 
     public void insertAfter(int nextTo, int data) {
@@ -32,85 +31,81 @@ class Singly {
         }
         if (temp == null) {
             return;
-        }//check if empty
+
+        }
         if (temp == tail) {
             tail.next = newNode;
+            newNode.prev = tail;
             tail = newNode;
             return;
-        }//is at end
+        }
         newNode.next = temp.next;
+        newNode.prev = temp;
+        temp.next.prev = newNode;
         temp.next = newNode;
-        //not at front and empty
 
     }
 
     public void deleteNode(int data) {
         Node temp = head, prev = null;
-
         if (temp == null) {
-            System.out.println("Linked list is empty");
+            System.out.println("Empty List");
             return;
-        }//empty check
+        }
         if (temp != null && temp.data == data) {
             head = temp.next;
-            return;
-        }//in first position
+            temp.prev = null;
+        }
         if (temp == tail) {
-            tail = prev;
+            tail = tail.prev;
             tail.next = null;
-            return;
-        }// at end
+        }
         while (temp != null && temp.data != data) {
             prev = temp;
             temp = temp.next;
-        }//other position than front and back
+        }
         prev.next = temp.next;
+        temp.next.prev = prev;
+
     }
 
     public void display() {
-        if (head == null) {
+        Node temp = head;
+        if (temp == null) {
             System.out.println("Empty");
             return;
         }
-        Node temp = head;
         while (temp != null) {
             System.out.println(temp.data);
             temp = temp.next;
         }
-
     }
 
-    //Delete nearby duplicates from Singly linked list
-    public void removeDuplicates()
-    {
-        Node current=head;
-        while(current!=null)
-        {
-            Node next=current.next;
-            while(next!=null && next.data==current.data)
-            {
-                next=next.next;
-            }
-            current.next=next;
-            if(next==tail){
-                tail=current;
-            }
-            current=next;
+    public void displayReverse() {
+        Node temp = tail;
+        if (temp == null) {
+            System.out.println("Empty");
+            return;
+        }
+        while (temp != null) {
+            System.out.println(temp.data);
+            temp = temp.prev;
         }
     }
 
     public static void main(String[] args) {
-        Singly list = new Singly();
+        Doubly list = new Doubly();
         list.display();
-        list.addNode(10);//add 10
-        list.addNode(20);//add 20
-        list.addNode(30);//add 30
-        list.addNode(40);//add 40
-        list.display();// Just Display
-        list.deleteNode(40);//Delete 40
-        list.display();//Just Display
-        list.insertAfter(20, 60);//add data 60 after data 20 position
-        list.display();//Just Display
-
+        list.insertNode(10);
+        list.insertNode(20);
+        list.insertNode(30);
+        list.display();
+        // list.displayReverse();
+        list.insertAfter(20, 60);
+        list.display();
+        list.deleteNode(20);
+        list.insertAfter(10, 80);
+        list.display();
     }
+
 }
