@@ -9,6 +9,8 @@ public class Exception1 {
         {
             System.out.println("Exception catched from catch block");
 
+        }finally{
+            System.out.println("After Try catch.. Finally Executed");
         }
         
     }
