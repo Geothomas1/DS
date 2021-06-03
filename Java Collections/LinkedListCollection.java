@@ -6,7 +6,6 @@ public class LinkedListCollection {
         list.add("Benze");
         list.add("Maruthi");
         System.out.println(list);
-
         
     }
     
