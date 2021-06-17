@@ -12,7 +12,6 @@ class LinearSearch {
                 flag = 1;
                 break;
             }
-
         }
         if (flag == 1) {
             System.out.println("Item Found in Array");
