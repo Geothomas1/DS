@@ -1,34 +1,33 @@
 import java.util.Scanner;
 
-class Qust1{
-    public static void main(String args[]) throws StringIndexOutOfBoundsException
-    {
-        String input;
-        char arr1[]=new char[4];
-        int num[]=new int[4];
-        int j=0,k=0;
-        Scanner sc=new Scanner(System.in);
-        input=sc.nextLine();
-        for(int i=0;i<=input.length();i++)
-        {
-            if(i%2==0)
-            {
-                arr1[k]=input.charAt(i);
-                System.out.println(arr1[k]);
-                k++;
-            }else
-            {
-                char tmp=input.charAt(i);
-                num[j]=Character.getNumericValue(tmp);
-                j++;
-            }
-        }
-        for(int i=0;i<num[i];i++)
-        {
-            for(int l=0;l<i;l++)
-            {
-                System.out.println(arr1[l]);
+class Qust1 {
+    public static void main(String args[]) {
+        Scanner sc = new Scanner(System.in);
+        String input = sc.nextLine();
+        Character character = null;
+        String number = "";
+        for (int i = 0; i < input.length(); i++) {
+            if (Character.isLetter(input.charAt(i))) {
+                if (i != 0) {
+                    printChar(character, number);
+                    number = "";
+                }
+                character = input.charAt(i);
+            } else {
+                number = number + input.charAt(i);
+                if (i == input.length() - 1) {
+                    printChar(character, number);
+                }
             }
         }
     }
+
+    public static void printChar(Character character, String number) {
+        // System.out.println(number);
+        for (int i = 0; i < Integer.parseInt(number); i++) {
+            System.out.print(character);
+        }
+    }
 }
+//a1b2c3
+//output abbccc
