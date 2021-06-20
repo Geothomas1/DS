@@ -1,5 +1,3 @@
-import javax.lang.model.element.Element;
-
 class Queue{
     final static int MAX=100;
     int front,rear;

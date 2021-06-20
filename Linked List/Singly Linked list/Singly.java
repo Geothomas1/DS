@@ -1,4 +1,3 @@
-
 class Singly {
     class Node {
         int data;
